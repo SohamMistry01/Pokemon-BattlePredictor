@@ -94,7 +94,9 @@ def show_pokemon_info(name):
 
         info_df = row.drop(columns=['sprites']).T.reset_index()
         info_df.columns = ['Attribute', 'Value']
+        info_df['Value'] = info_df['Value'].astype(str)  # ✅ Convert all values to string
         st.dataframe(info_df.set_index('Attribute'), use_container_width=True)
+
 
 col1, col2 = st.columns(2)
 with col1:
